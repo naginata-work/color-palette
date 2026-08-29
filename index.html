@@ -61,7 +61,25 @@
     <button class="copy-all-btn" id="copyAllBtn"></button>
   </div>
 
+  <div class="card" style="font-size:13px; line-height:1.9; color:var(--sub);">
+    <h2 id="aboutTitle" style="font-size:15px; color:var(--text); margin:0 0 8px;"></h2>
+    <p id="aboutBody1" style="margin:0 0 10px;"></p>
+    <p id="aboutBody2" style="margin:0;"></p>
+  </div>
+
+  <div class="card" style="font-size:13px; line-height:1.9; color:var(--sub);">
+    <h2 id="faqTitle" style="font-size:15px; color:var(--text); margin:0 0 10px;"></h2>
+    <p id="faq1Q" style="margin:0 0 4px; color:var(--text); font-weight:bold;"></p>
+    <p id="faq1A" style="margin:0 0 12px;"></p>
+    <p id="faq2Q" style="margin:0 0 4px; color:var(--text); font-weight:bold;"></p>
+    <p id="faq2A" style="margin:0;"></p>
+  </div>
+
   <p class="footer-links" id="footerLinks"></p>
+  <p style="text-align:center; font-size:11px; color:var(--sub); margin-top:4px;">
+    <a href="https://naginata-work.github.io/" style="color:var(--sub);" id="allToolsLink"></a> ・
+    <a href="https://naginata-work.github.io/privacy.html" style="color:var(--sub);" id="privacyLink"></a>
+  </p>
 </div>
 
 <script>
@@ -75,7 +93,15 @@
       copyAllBtn: 'すべてのHEXコードをコピー',
       copied: 'コピーしました!',
       tapToCopy: 'タップでコピー',
-      footerLinks: '他のツールも作っています → <a href="https://naginata-work.github.io/password-gen/" target="_blank" rel="noopener">パスワード生成</a> / <a href="https://naginata-work.github.io/text-tools/" target="_blank" rel="noopener">文字数カウント</a>'
+      footerLinks: '他のツールも作っています → <a href="https://naginata-work.github.io/password-gen/" target="_blank" rel="noopener">パスワード生成</a> / <a href="https://naginata-work.github.io/text-tools/" target="_blank" rel="noopener">文字数カウント</a>',
+      aboutTitle: '配色パターンについて',
+      aboutBody1: 'デザインの経験がなくても「なんとなく合う色」を選ぶのは難しいものです。色彩理論の世界には、色相環(色を円環状に並べたもの)上の位置関係を使って調和の取れた配色を導き出す、いくつかの定番パターンがあります。',
+      aboutBody2: 'このツールは基準の色から色相環上の角度を計算し、「補色(正反対の色)」「類似色(近い色)」「トライアド(均等に3分割)」など5パターンを自動生成します。各色のスウォッチをタップするとHEXコードがコピーされるので、そのままCSSやデザインツールに貼り付けられます。',
+      faqTitle: 'よくある質問',
+      faq1Q: '「補色」と「類似色」はどう使い分ければいい?',
+      faq1A: '補色はメリハリのある目立つ配色を作りたいとき(ボタンやアクセントなど)、類似色は落ち着いた統一感のある配色を作りたいとき(背景や全体トーン)に向いています。',
+      faq2Q: '生成された色は保存できる?',
+      faq2A: '各色をタップすればHEXコードがクリップボードにコピーされます。「すべてのHEXコードをコピー」ボタンを使えば、パレット全体を一度にコピーしてメモやデザインツールに貼り付けられます。',
     },
     en: {
       title: '🎨 Color Palette Generator',
@@ -86,7 +112,15 @@
       copyAllBtn: 'Copy all hex codes',
       copied: 'Copied!',
       tapToCopy: 'Tap to copy',
-      footerLinks: 'Also made these → <a href="https://naginata-work.github.io/password-gen/" target="_blank" rel="noopener">Password Generator</a> / <a href="https://naginata-work.github.io/text-tools/" target="_blank" rel="noopener">Text Counter</a>'
+      footerLinks: 'Also made these → <a href="https://naginata-work.github.io/password-gen/" target="_blank" rel="noopener">Password Generator</a> / <a href="https://naginata-work.github.io/text-tools/" target="_blank" rel="noopener">Text Counter</a>',
+      aboutTitle: 'About color schemes',
+      aboutBody1: "Picking colors that just look right is hard without design training. Color theory offers a few reliable shortcuts based on where colors sit relative to each other on the color wheel.",
+      aboutBody2: 'This tool calculates hue-wheel angles from your base color and generates five standard schemes — complementary (opposite), analogous (neighboring), triadic (evenly split into three), and more. Tap any swatch to copy its hex code straight into your CSS or design tool.',
+      faqTitle: 'FAQ',
+      faq1Q: 'When should I use complementary vs. analogous colors?',
+      faq1A: "Complementary pairs create strong contrast, good for buttons or accents you want to stand out. Analogous colors sit close together and feel calmer and more unified — better for backgrounds or an overall tone.",
+      faq2Q: 'Can I save the generated colors?',
+      faq2A: 'Tap any swatch to copy that hex code to your clipboard, or use "Copy all hex codes" to grab the whole palette at once and paste it into notes or a design tool.',
     }
   };
 
@@ -203,6 +237,18 @@
     schemeSel.value = prevVal;
     document.getElementById('copyAllBtn').textContent = t().copyAllBtn;
     document.getElementById('footerLinks').innerHTML = t().footerLinks;
+    document.getElementById('aboutTitle').textContent = t().aboutTitle;
+    document.getElementById('aboutBody1').textContent = t().aboutBody1;
+    document.getElementById('aboutBody2').textContent = t().aboutBody2;
+    document.getElementById('faqTitle').textContent = t().faqTitle;
+    document.getElementById('faq1Q').textContent = t().faq1Q;
+    document.getElementById('faq1A').textContent = t().faq1A;
+    document.getElementById('faq2Q').textContent = t().faq2Q;
+    document.getElementById('faq2A').textContent = t().faq2A;
+    document.getElementById('allToolsLink').textContent = lang === 'ja' ? '他のツール一覧' : 'All tools';
+    document.getElementById('allToolsLink').href = 'https://naginata-work.github.io/';
+    document.getElementById('privacyLink').textContent = lang === 'ja' ? 'プライバシーポリシー' : 'Privacy policy';
+    document.getElementById('privacyLink').href = 'https://naginata-work.github.io/privacy.html';
     generatePalette();
   }
 
